@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bwmjgobfmdxob"]
+
+[ext_resource type="Script" uid="uid://cc65ygdfcjnen" path="res://Programas/personaje.gd" id="1_s1y1a"]
+[ext_resource type="Texture2D" uid="uid://cgywg051aulnd" path="res://Visuales/People.png" id="2_vpgkb"]
+[ext_resource type="Texture2D" uid="uid://cb4c24v3fs31h" path="res://Visuales/Weapons.png" id="3_a0nbt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v48ad"]
+radius = 3.0
+height = 8.0
+
+[node name="Personaje" type="CharacterBody2D" unique_id=1737639895]
+motion_mode = 1
+script = ExtResource("1_s1y1a")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1943652456]
+texture = ExtResource("2_vpgkb")
+region_enabled = true
+region_rect = Rect2(2, 121, 7, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1584344491]
+shape = SubResource("CapsuleShape2D_v48ad")
+
+[node name="Arma" type="Node2D" parent="." unique_id=1470541194]
+
+[node name="SpriteArma" type="Sprite2D" parent="Arma" unique_id=1203654860]
+position = Vector2(0, -3)
+rotation = -0.7853982
+texture = ExtResource("3_a0nbt")
+region_enabled = true
+region_rect = Rect2(21, 81, 8, 8)
+
+[node name="Cannon" type="Node2D" parent="Arma" unique_id=179143214]
+position = Vector2(0, -5)
