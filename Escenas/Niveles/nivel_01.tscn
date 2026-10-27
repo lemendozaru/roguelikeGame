@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://dthcmxleiwfy7"]
 
 [ext_resource type="PackedScene" uid="uid://bwmjgobfmdxob" path="res://Escenas/personaje.tscn" id="1_1pkrl"]
+[ext_resource type="Script" uid="uid://b2vdt6aw8jibu" path="res://Programas/generacion_cuartos.gd" id="1_afajc"]
 
 [node name="Principal" type="Node2D" unique_id=150619936]
+
+[node name="Node" type="Node" parent="." unique_id=1751631571]
+script = ExtResource("1_afajc")
 
 [node name="Personaje" parent="." unique_id=1737639895 instance=ExtResource("1_1pkrl")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1568157696]
-zoom = Vector2(4, 4)
+zoom = Vector2(0.6, 0.6)

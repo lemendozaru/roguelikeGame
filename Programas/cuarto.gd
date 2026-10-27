@@ -1,0 +1,2 @@
+class_name Cuarto
+extends StaticBody2D
