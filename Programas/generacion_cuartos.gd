@@ -74,10 +74,54 @@ func _instanciar_cuartos():
 				continue
 			
 			var cuarto : Cuarto = escena_cuarto.instantiate()
+			var es_primer_cuarto : bool = primer_cuarto_x == x and primer_cuarto_y == y
+			
 			get_tree().root.add_child.call_deferred(cuarto)
 			cuartos.append(cuarto)
 			
 			cuarto.global_position = Vector2(x,y) * cuartos_pos_desfase
+			
+			if es_primer_cuarto:
+				primer_cuarto = cuarto
+			
+			cuarto.inicializar()
+			
+						
+	for cuarto in cuartos:
+		var pos_mapa : Vector2 = _obtener_indice_mapa(cuarto)
+		var x = pos_mapa.x
+		var y = pos_mapa.y
+		
+		# Checamos vecino en el norte
+		if y > 0 and _obtener_mapa(x, y - 1):
+			cuarto.colocar_vecino.call_deferred(Cuarto.Direccion.NORTE, obtener_cuarto_del_mapa(x, y - 1)
+			)
+		# Checamos vecino en el sur
+		if y < talla_mapa - 1 and _obtener_mapa(x, y + 1):
+			cuarto.colocar_vecino.call_deferred(Cuarto.Direccion.SUR, obtener_cuarto_del_mapa(x, y + 1)
+			)
+		# Checamos vecino en el oeste
+		if x > 0 and _obtener_mapa(x - 1, y):
+			cuarto.colocar_vecino.call_deferred(Cuarto.Direccion.OESTE, obtener_cuarto_del_mapa(x - 1, y)
+			)
+		# Checamos vecino en el este
+		if x < talla_mapa - 1 and _obtener_mapa(x + 1, y):
+			cuarto.colocar_vecino.call_deferred(Cuarto.Direccion.ESTE, obtener_cuarto_del_mapa(x + 1, y)
+			)
+			
+	primer_cuarto.jugador_entra.call_deferred(Cuarto.Direccion.NORTE, jugador, true)		
+		
+func obtener_cuarto_del_mapa(x : int, y : int) -> Cuarto:
+	for cuarto in cuartos:
+		var pos = _obtener_indice_mapa(cuarto)
+		if pos.x != x and pos.y != y:
+			continue
+		
+		return cuarto
+	return null
+
+func _obtener_indice_mapa(cuarto : Cuarto) -> Vector2i:
+	return Vector2i(cuarto.global_position / cuartos_pos_desfase)
 	
 func _obtener_mapa(x : int, y : int) -> bool:
 	return mapa[x + y * talla_mapa]

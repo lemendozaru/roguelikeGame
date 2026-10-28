@@ -5,10 +5,11 @@
 
 [node name="Principal" type="Node2D" unique_id=150619936]
 
-[node name="Node" type="Node" parent="." unique_id=1751631571]
+[node name="GeneracionCuartos" type="Node" parent="." unique_id=1751631571 node_paths=PackedStringArray("jugador")]
 script = ExtResource("1_afajc")
+jugador = NodePath("../Personaje")
 
 [node name="Personaje" parent="." unique_id=1737639895 instance=ExtResource("1_1pkrl")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1568157696]
-zoom = Vector2(0.6, 0.6)
+position = Vector2(580, 325)
