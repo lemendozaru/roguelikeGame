@@ -14,6 +14,10 @@ config/name="roguelike-game"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SenalesGlobales="*uid://ccjt5fye2vf0v"
+
 [display]
 
 window/stretch/mode="canvas_items"

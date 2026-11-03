@@ -50,6 +50,9 @@ func jugador_entra(direccion_entrada : Direccion, jugador : CharacterBody2D, pri
 	if primer_cuarto:
 		jugador.global_position = global_position
 		
+	# Emite la señal global
+	SenalesGlobales.OnJugadorEntraCuarto.emit(self)	
+		
 	if enemigos_presentes > 0 and not puertas_siempre_abiertas:
 		cerrar_puertas()
 	else:
