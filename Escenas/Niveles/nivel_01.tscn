@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bwmjgobfmdxob" path="res://Escenas/personaje.tscn" id="1_1pkrl"]
 [ext_resource type="Script" uid="uid://b2vdt6aw8jibu" path="res://Programas/generacion_cuartos.gd" id="1_afajc"]
+[ext_resource type="PackedScene" uid="uid://g8n4lbwml33b" path="res://Escenas/Proyectiles/proyectil.tscn" id="3_h68uh"]
 
 [node name="Principal" type="Node2D" unique_id=150619936]
 
@@ -13,3 +14,7 @@ jugador = NodePath("../Personaje")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1568157696]
 position = Vector2(580, 325)
+
+[node name="Proyectil" parent="." unique_id=1358549408 instance=ExtResource("3_h68uh")]
+
+[connection signal="body_entered" from="Proyectil" to="Proyectil" method="_on_body_entered"]
