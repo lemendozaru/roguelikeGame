@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://crlg62msnty6d"]
+
+[ext_resource type="Script" uid="uid://054fhukjw3sr" path="res://Programas/menu.gd" id="1_1rerr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u4yt8"]
+font_size = 71
+
+[node name="Menu" type="Control" unique_id=2065673669]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rerr")
+
+[node name="Title" type="Label" parent="." unique_id=1101631346]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 31.0
+offset_bottom = 150.0
+grow_horizontal = 2
+text = "Roguelikecito"
+label_settings = SubResource("LabelSettings_u4yt8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="." unique_id=1078311998]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 203.0
+offset_right = 670.0
+offset_bottom = 260.0
+text = "Jugar"
+
+[node name="QuitButton" type="Button" parent="." unique_id=332472377]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 278.0
+offset_right = 670.0
+offset_bottom = 335.0
+text = "Salir"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

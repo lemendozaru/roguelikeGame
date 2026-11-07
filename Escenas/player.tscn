@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://r1hhsx420f5x"]
+
+[ext_resource type="Script" uid="uid://crkfco0rlqhsw" path="res://Programas/player.gd" id="1_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://cgywg051aulnd" path="res://Sprites/People.png" id="2_vgqql"]
+[ext_resource type="Texture2D" uid="uid://cb4c24v3fs31h" path="res://Sprites/Weapons.png" id="3_fkybt"]
+[ext_resource type="AudioStream" uid="uid://gkhowxtgm65m" path="res://Audio/PlayerAttack.wav" id="4_vgqql"]
+[ext_resource type="AudioStream" uid="uid://c6oq1nkhaypuo" path="res://Audio/PlayerDamaged.wav" id="5_fkybt"]
+[ext_resource type="AudioStream" uid="uid://dkp4wuohyfiyr" path="res://Audio/CollectItem.wav" id="6_x3wgy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4dpyx"]
+radius = 3.0
+height = 9.0
+
+[node name="Player" type="CharacterBody2D" unique_id=293054812 groups=["Jugador"]]
+collision_layer = 2
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_6t5aa")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=34925440]
+texture = ExtResource("2_vgqql")
+region_enabled = true
+region_rect = Rect2(2, 121, 7, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=77089600]
+shape = SubResource("CapsuleShape2D_4dpyx")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=159544665]
+
+[node name="WeaponSprite" type="Sprite2D" parent="Weapon" unique_id=298124794]
+position = Vector2(0, -3)
+rotation = -0.7853982
+texture = ExtResource("3_fkybt")
+region_enabled = true
+region_rect = Rect2(21, 81, 8, 8)
+
+[node name="Muzzle" type="Node2D" parent="Weapon" unique_id=1451196792]
+position = Vector2(0, -6)
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=1382540359]
+stream = ExtResource("4_vgqql")
+
+[node name="DamagedSound" type="AudioStreamPlayer2D" parent="." unique_id=449514069]
+stream = ExtResource("5_fkybt")
+
+[node name="ItemSound" type="AudioStreamPlayer2D" parent="." unique_id=1177982826]
+stream = ExtResource("6_x3wgy")

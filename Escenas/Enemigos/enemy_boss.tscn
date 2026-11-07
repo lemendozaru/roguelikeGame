@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://shkwba01vgr8"]
+
+[ext_resource type="PackedScene" uid="uid://dn47jk3rfsev7" path="res://Escenas/Enemigos/enemy.tscn" id="1_18w5d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_18w5d"]
+radius = 5.0
+
+[node name="Enemy" unique_id=674302060 instance=ExtResource("1_18w5d")]
+
+[node name="Sprite" parent="." index="0" unique_id=948513010]
+region_rect = Rect2(6, 150, 18, 10)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=267890744]
+shape = SubResource("CircleShape2D_18w5d")

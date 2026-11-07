@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c04k406c1ikmj"]
+
+[ext_resource type="PackedScene" uid="uid://dsdjpdeiudmga" path="res://Escenas/Objetos/item.tscn" id="1_0rh8g"]
+
+[node name="Item" unique_id=228552372 instance=ExtResource("1_0rh8g")]
+value = 2.0

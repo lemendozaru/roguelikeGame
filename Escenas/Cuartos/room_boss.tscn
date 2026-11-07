@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dmikw0k571ift"]
+
+[ext_resource type="PackedScene" uid="uid://bbvkr0vbcuahs" path="res://Escenas/Cuartos/room_template.tscn" id="1_e7ge8"]
+[ext_resource type="PackedScene" uid="uid://shkwba01vgr8" path="res://Escenas/Enemigos/enemy_boss.tscn" id="2_rbiyq"]
+[ext_resource type="PackedScene" uid="uid://dn47jk3rfsev7" path="res://Escenas/Enemigos/enemy.tscn" id="3_6q2y6"]
+[ext_resource type="Script" uid="uid://b5vmlcyw0eedq" path="res://Programas/next_level_portal.gd" id="4_5pmj5"]
+[ext_resource type="Texture2D" uid="uid://cxpfwvo170iol" path="res://Sprites/Tiles.png" id="4_6q2y6"]
+[ext_resource type="PackedScene" uid="uid://crlg62msnty6d" path="res://Escenas/menu.tscn" id="5_cffxh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5pmj5"]
+radius = 4.0
+
+[node name="Room_Template" unique_id=1862464353 instance=ExtResource("1_e7ge8")]
+
+[node name="Enemy" parent="." index="9" unique_id=768146013 instance=ExtResource("2_rbiyq")]
+
+[node name="Enemy2" parent="." index="10" unique_id=1868414476 instance=ExtResource("3_6q2y6")]
+position = Vector2(-47, -48)
+vida_actual = null
+vida_max = null
+velocidad_mov = null
+
+[node name="Enemy3" parent="." index="11" unique_id=176452053 instance=ExtResource("3_6q2y6")]
+position = Vector2(49, 46)
+vida_actual = null
+vida_max = null
+velocidad_mov = null
+
+[node name="NextLevelPortal" type="Area2D" parent="." index="12" unique_id=1004967050 node_paths=PackedStringArray("boss")]
+collision_mask = 3
+script = ExtResource("4_5pmj5")
+boss = NodePath("../Enemy")
+next_level = ExtResource("5_cffxh")
+
+[node name="Sprite" type="Sprite2D" parent="NextLevelPortal" index="0" unique_id=526005125]
+texture = ExtResource("4_6q2y6")
+region_enabled = true
+region_rect = Rect2(21, 11, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelPortal" index="1" unique_id=1948070416]
+shape = SubResource("CircleShape2D_5pmj5")
+
+[connection signal="body_entered" from="NextLevelPortal" to="NextLevelPortal" method="_on_body_entered"]

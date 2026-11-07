@@ -1,0 +1,242 @@
+[gd_scene format=4 uid="uid://bbvkr0vbcuahs"]
+
+[ext_resource type="TileSet" uid="uid://cftkhchqblag" path="res://Sprites/tileset.tres" id="1_11dti"]
+[ext_resource type="Script" uid="uid://pkrc4vllc8on" path="res://Programas/cuarto.gd" id="1_s3j8h"]
+[ext_resource type="Script" uid="uid://brnead70lqlro" path="res://Programas/entrada_cuartos.gd" id="2_s3j8h"]
+[ext_resource type="Texture2D" uid="uid://cxpfwvo170iol" path="res://Sprites/Tiles.png" id="3_h1l6b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iixi8"]
+size = Vector2(16, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3mqfk"]
+radius = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mqfk"]
+size = Vector2(16, 8)
+
+[node name="Room_Template" type="StaticBody2D" unique_id=1266620547]
+script = ExtResource("1_s3j8h")
+
+[node name="Base" type="TileMapLayer" parent="." unique_id=595199484]
+tile_map_data = PackedByteArray("AAABAPj/AAAHAAIAAAACAPj/AAAGAAYAAAADAPj/AAAGAAYAAAAEAPj/AAAGAAYAAAAFAPj/AAAGAAYAAAAGAPj/AAAGAAYAAAAHAPj/AAAHAAoAAAAHAPn/AAAGAAYAAGAHAPr/AAAGAAYAAGAHAPv/AAAGAAYAAGAHAPz/AAAGAAYAAGAHAP3/AAAGAAYAAGAHAP7/AAAHAAIAAAABAAcAAAAHAAIAAAACAAcAAAAGAAYAAAADAAcAAAAGAAYAAAAEAAcAAAAGAAYAAAAFAAcAAAAGAAYAAAAGAAcAAAAGAAYAAAAHAAcAAAAHAAoAAFAHAAYAAAAGAAYAAGAHAAUAAAAGAAYAAGAHAAQAAAAGAAYAAGAHAAMAAAAGAAYAAGAHAAIAAAAGAAYAAGAHAAEAAAAHAAIAAAD+/wcAAAAHAAIAAAD9/wcAAAAGAAYAAAD8/wcAAAAGAAYAAAD7/wcAAAAGAAYAAAD6/wcAAAAGAAYAAAD5/wcAAAAGAAYAAAD4/wcAAAAHAAoAADD4/wYAAAAGAAYAAGD4/wUAAAAGAAYAAGD4/wQAAAAGAAYAAGD4/wMAAAAGAAYAAGD4/wIAAAAGAAYAAGD4/wEAAAAHAAIAAAD4//7/AAAHAAIAAAD4//3/AAAGAAYAAGD4//z/AAAGAAYAAGD4//v/AAAGAAYAAGD4//r/AAAGAAYAAGD4//n/AAAGAAYAAGD4//j/AAAHAAoAAGD5//j/AAAGAAYAAAD6//j/AAAGAAYAAAD7//j/AAAGAAYAAAD8//j/AAAGAAYAAAD9//j/AAAGAAYAAAD+//j/AAAHAAIAAAA=")
+tile_set = ExtResource("1_11dti")
+
+[node name="WallCollider" type="CollisionPolygon2D" parent="." unique_id=2120780132]
+polygon = PackedVector2Array(-56, -56, -8, -56, -8, -81, -81, -81, -81, -8, -56, -8)
+
+[node name="WallCollider2" type="CollisionPolygon2D" parent="." unique_id=1856164227]
+rotation = 1.5707964
+polygon = PackedVector2Array(-56, -56, -8, -56, -8, -81, -81, -81, -81, -8, -56, -8)
+
+[node name="WallCollider3" type="CollisionPolygon2D" parent="." unique_id=1453584406]
+rotation = 3.1415927
+polygon = PackedVector2Array(-56, -56, -8, -56, -8, -81, -81, -81, -81, -8, -56, -8)
+
+[node name="WallCollider4" type="CollisionPolygon2D" parent="." unique_id=708036455]
+rotation = 4.712389
+polygon = PackedVector2Array(-56, -56, -8, -56, -8, -81, -81, -81, -81, -8, -56, -8)
+
+[node name="Entrance_North" type="Node2D" parent="." unique_id=483537632]
+script = ExtResource("2_s3j8h")
+
+[node name="Door" type="Node2D" parent="Entrance_North" unique_id=785805578]
+
+[node name="Tunnel" type="TileMapLayer" parent="Entrance_North/Door" unique_id=1510848415]
+tile_map_data = PackedByteArray("AAD+//f/AAAGAAYAAGD+//b/AAAGAAYAAGABAPb/AAAGAAYAAFABAPf/AAAGAAYAAFA=")
+tile_set = ExtResource("1_11dti")
+
+[node name="Door_Shut" type="StaticBody2D" parent="Entrance_North/Door" unique_id=509394822]
+position = Vector2(0, -60)
+
+[node name="DoorSprite" type="Sprite2D" parent="Entrance_North/Door/Door_Shut" unique_id=1987089705]
+position = Vector2(-4, 0)
+texture = ExtResource("3_h1l6b")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="DoorSprite2" type="Sprite2D" parent="Entrance_North/Door/Door_Shut" unique_id=1445109666]
+position = Vector2(4, 0)
+texture = ExtResource("3_h1l6b")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_North/Door/Door_Shut" unique_id=521317581]
+shape = SubResource("RectangleShape2D_iixi8")
+
+[node name="ExitTrigger" type="Area2D" parent="Entrance_North" unique_id=1898409245]
+position = Vector2(0, -73)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_North/ExitTrigger" unique_id=1124321924]
+shape = SubResource("CircleShape2D_3mqfk")
+
+[node name="PlayerSpawn" type="Node2D" parent="Entrance_North" unique_id=1540975286]
+position = Vector2(0, -45)
+
+[node name="Barrier" type="StaticBody2D" parent="Entrance_North" unique_id=152863436]
+visible = false
+position = Vector2(0, -60)
+
+[node name="TileMap" type="TileMapLayer" parent="Entrance_North/Barrier" unique_id=180318155]
+position = Vector2(0, -4)
+tile_map_data = PackedByteArray("AAD//wAAAAAGAAYAAAAAAAAAAAAGAAYAAAA=")
+tile_set = ExtResource("1_11dti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_North/Barrier" unique_id=1637771328]
+shape = SubResource("RectangleShape2D_3mqfk")
+
+[node name="Entrance_South" type="Node2D" parent="." unique_id=967767649]
+rotation = 3.1415927
+script = ExtResource("2_s3j8h")
+
+[node name="Door" type="Node2D" parent="Entrance_South" unique_id=1278848199]
+
+[node name="Tunnel" type="TileMapLayer" parent="Entrance_South/Door" unique_id=836195352]
+tile_map_data = PackedByteArray("AAD+//f/AAAGAAYAAGD+//b/AAAGAAYAAGABAPb/AAAGAAYAAFABAPf/AAAGAAYAAFA=")
+tile_set = ExtResource("1_11dti")
+
+[node name="Door_Shut" type="StaticBody2D" parent="Entrance_South/Door" unique_id=1741121664]
+position = Vector2(0, -60)
+
+[node name="DoorSprite" type="Sprite2D" parent="Entrance_South/Door/Door_Shut" unique_id=360536547]
+position = Vector2(-4, 0)
+rotation = -3.1415927
+texture = ExtResource("3_h1l6b")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="DoorSprite2" type="Sprite2D" parent="Entrance_South/Door/Door_Shut" unique_id=996887075]
+position = Vector2(4, 0)
+rotation = -3.1415927
+texture = ExtResource("3_h1l6b")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_South/Door/Door_Shut" unique_id=916861278]
+shape = SubResource("RectangleShape2D_iixi8")
+
+[node name="ExitTrigger" type="Area2D" parent="Entrance_South" unique_id=984132005]
+position = Vector2(0, -73)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_South/ExitTrigger" unique_id=922391609]
+shape = SubResource("CircleShape2D_3mqfk")
+
+[node name="PlayerSpawn" type="Node2D" parent="Entrance_South" unique_id=1251049571]
+position = Vector2(0, -45)
+
+[node name="Barrier" type="StaticBody2D" parent="Entrance_South" unique_id=384267266]
+visible = false
+position = Vector2(0, -60)
+
+[node name="TileMap" type="TileMapLayer" parent="Entrance_South/Barrier" unique_id=1991027010]
+position = Vector2(0, -4)
+tile_map_data = PackedByteArray("AAD//wAAAAAGAAYAAAAAAAAAAAAGAAYAAAA=")
+tile_set = ExtResource("1_11dti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_South/Barrier" unique_id=173548743]
+shape = SubResource("RectangleShape2D_3mqfk")
+
+[node name="Entrance_West" type="Node2D" parent="." unique_id=694359943]
+rotation = -1.5707964
+script = ExtResource("2_s3j8h")
+
+[node name="Door" type="Node2D" parent="Entrance_West" unique_id=698404923]
+
+[node name="Tunnel" type="TileMapLayer" parent="Entrance_West/Door" unique_id=183064845]
+tile_map_data = PackedByteArray("AAD+//f/AAAGAAYAAGD+//b/AAAGAAYAAGABAPb/AAAGAAYAAFABAPf/AAAGAAYAAFA=")
+tile_set = ExtResource("1_11dti")
+
+[node name="Door_Shut" type="StaticBody2D" parent="Entrance_West/Door" unique_id=494501402]
+position = Vector2(0, -60)
+
+[node name="DoorSprite" type="Sprite2D" parent="Entrance_West/Door/Door_Shut" unique_id=421149278]
+position = Vector2(-4, 0)
+rotation = 1.5707964
+texture = ExtResource("3_h1l6b")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="DoorSprite2" type="Sprite2D" parent="Entrance_West/Door/Door_Shut" unique_id=2105650701]
+position = Vector2(4, 0)
+rotation = 1.5707964
+texture = ExtResource("3_h1l6b")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_West/Door/Door_Shut" unique_id=340441557]
+shape = SubResource("RectangleShape2D_iixi8")
+
+[node name="ExitTrigger" type="Area2D" parent="Entrance_West" unique_id=2068103142]
+position = Vector2(0, -73)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_West/ExitTrigger" unique_id=271641466]
+shape = SubResource("CircleShape2D_3mqfk")
+
+[node name="PlayerSpawn" type="Node2D" parent="Entrance_West" unique_id=1813947856]
+position = Vector2(0, -45)
+
+[node name="Barrier" type="StaticBody2D" parent="Entrance_West" unique_id=619713820]
+visible = false
+position = Vector2(0, -60)
+
+[node name="TileMap" type="TileMapLayer" parent="Entrance_West/Barrier" unique_id=817742770]
+position = Vector2(0, -4)
+tile_map_data = PackedByteArray("AAD//wAAAAAGAAYAAAAAAAAAAAAGAAYAAAA=")
+tile_set = ExtResource("1_11dti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_West/Barrier" unique_id=454371636]
+shape = SubResource("RectangleShape2D_3mqfk")
+
+[node name="Entrance_East" type="Node2D" parent="." unique_id=148834566]
+rotation = 1.5707964
+script = ExtResource("2_s3j8h")
+
+[node name="Door" type="Node2D" parent="Entrance_East" unique_id=990724498]
+
+[node name="Tunnel" type="TileMapLayer" parent="Entrance_East/Door" unique_id=355066527]
+tile_map_data = PackedByteArray("AAD+//f/AAAGAAYAAGD+//b/AAAGAAYAAGABAPb/AAAGAAYAAFABAPf/AAAGAAYAAFA=")
+tile_set = ExtResource("1_11dti")
+
+[node name="Door_Shut" type="StaticBody2D" parent="Entrance_East/Door" unique_id=1024258396]
+position = Vector2(0, -60)
+
+[node name="DoorSprite" type="Sprite2D" parent="Entrance_East/Door/Door_Shut" unique_id=1597711992]
+position = Vector2(-4, 0)
+rotation = -1.5707964
+texture = ExtResource("3_h1l6b")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="DoorSprite2" type="Sprite2D" parent="Entrance_East/Door/Door_Shut" unique_id=956493632]
+position = Vector2(4, 0)
+rotation = -1.5707964
+texture = ExtResource("3_h1l6b")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_East/Door/Door_Shut" unique_id=374909954]
+shape = SubResource("RectangleShape2D_iixi8")
+
+[node name="ExitTrigger" type="Area2D" parent="Entrance_East" unique_id=780230692]
+position = Vector2(0, -73)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_East/ExitTrigger" unique_id=1821659069]
+shape = SubResource("CircleShape2D_3mqfk")
+
+[node name="PlayerSpawn" type="Node2D" parent="Entrance_East" unique_id=388297882]
+position = Vector2(0, -45)
+
+[node name="Barrier" type="StaticBody2D" parent="Entrance_East" unique_id=1768995916]
+visible = false
+position = Vector2(0, -60)
+
+[node name="TileMap" type="TileMapLayer" parent="Entrance_East/Barrier" unique_id=880849057]
+position = Vector2(0, -4)
+tile_map_data = PackedByteArray("AAD//wAAAAAGAAYAAAAAAAAAAAAGAAYAAAA=")
+tile_set = ExtResource("1_11dti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance_East/Barrier" unique_id=657443655]
+shape = SubResource("RectangleShape2D_3mqfk")

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://rc0tm1q5d21j"]
+
+[ext_resource type="Script" uid="uid://dm1xbeg2f6afc" path="res://Programas/projectile.gd" id="1_aihi3"]
+[ext_resource type="Texture2D" uid="uid://cb4c24v3fs31h" path="res://Sprites/Weapons.png" id="2_c3q3r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iixi8"]
+radius = 2.0
+
+[node name="Projectile" type="Area2D" unique_id=376231147]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_aihi3")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=663121024]
+rotation = -0.7853982
+texture = ExtResource("2_c3q3r")
+region_enabled = true
+region_rect = Rect2(45, 20, 5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=773728913]
+shape = SubResource("CircleShape2D_iixi8")
+
+[node name="Timer" type="Timer" parent="." unique_id=1644986373]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

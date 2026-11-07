@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b6si4lad7o5vg"]
+
+[ext_resource type="PackedScene" uid="uid://bbvkr0vbcuahs" path="res://Escenas/Cuartos/room_template.tscn" id="1_ko48x"]
+[ext_resource type="PackedScene" uid="uid://dn47jk3rfsev7" path="res://Escenas/Enemigos/enemy.tscn" id="2_fh61c"]
+
+[node name="Room_Template" unique_id=645854874 instance=ExtResource("1_ko48x")]
+
+[node name="Enemy" parent="." index="9" unique_id=949756224 instance=ExtResource("2_fh61c")]
+position = Vector2(-48, -47)
+
+[node name="Enemy2" parent="." index="10" unique_id=2137975358 instance=ExtResource("2_fh61c")]
+position = Vector2(46, -46)
+
+[node name="Enemy3" parent="." index="11" unique_id=1572001221 instance=ExtResource("2_fh61c")]
+position = Vector2(48, 45)
+
+[node name="Enemy4" parent="." index="12" unique_id=1770951671 instance=ExtResource("2_fh61c")]
+position = Vector2(-48, 48)

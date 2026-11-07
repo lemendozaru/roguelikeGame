@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://jo0a6v0u1jp1"]
+
+[ext_resource type="PackedScene" uid="uid://bbvkr0vbcuahs" path="res://Escenas/Cuartos/room_template.tscn" id="1_xqp6c"]
+[ext_resource type="PackedScene" uid="uid://csll23hyb62jg" path="res://Escenas/Objetos/item_shoot_rate.tscn" id="2_1pe3g"]
+[ext_resource type="Script" uid="uid://pmie31fe77ib" path="res://Programas/room_item_spawner.gd" id="3_mkpsy"]
+[ext_resource type="PackedScene" uid="uid://c04k406c1ikmj" path="res://Escenas/Objetos/item_health.tscn" id="3_tkrxl"]
+[ext_resource type="PackedScene" uid="uid://cqeysnn474ewq" path="res://Escenas/Objetos/item_move_speed.tscn" id="4_eigse"]
+
+[node name="Room_Template" unique_id=1981193069 instance=ExtResource("1_xqp6c")]
+
+[node name="RoomItemSpawner" type="Node2D" parent="." index="9" unique_id=1401411019]
+script = ExtResource("3_mkpsy")
+item_scenes = Array[PackedScene]([ExtResource("3_tkrxl"), ExtResource("4_eigse"), ExtResource("2_1pe3g")])
